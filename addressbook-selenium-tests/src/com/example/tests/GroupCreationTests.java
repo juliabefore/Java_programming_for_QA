@@ -25,6 +25,7 @@ public class GroupCreationTests {
   @Test
   public void testUntitled() throws Exception {
     //driver.get(baseUrl + "/addressbookv4.1.4/");
+    driver.get(baseUrl);
     driver.findElement(By.linkText("groups")).click();
     driver.findElement(By.name("new")).click();
     driver.findElement(By.name("group_name")).clear();
