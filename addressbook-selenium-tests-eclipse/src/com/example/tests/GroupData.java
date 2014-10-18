@@ -5,8 +5,8 @@ public class GroupData {
 	public String header;
 	public String footer;
 
-	public GroupData(String pname, String header, String footer) {
-		this.name = pname;
+	public GroupData(String name, String header, String footer) {
+		this.name = name;
 		this.header = header;
 		this.footer = footer;
 	}
