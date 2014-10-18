@@ -3,7 +3,7 @@ package com.example.tests;
 import org.testng.annotations.Test;
 
 public class ContactCreationTests extends TestBase {
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void testNonEmptyContactCreation() throws Exception {
     app.getNavigationHelper().openMainPage();
     app.getContactHelper().initContactCreation();
@@ -27,7 +27,7 @@ public class ContactCreationTests extends TestBase {
     app.getContactHelper().returnToHomePage();
   }
   
-  @Test(enabled = false)
+  @Test(enabled = true)
   public void testEmptyContactCreation() throws Exception {
     app.getNavigationHelper().openMainPage();
     app.getContactHelper().initContactCreation();

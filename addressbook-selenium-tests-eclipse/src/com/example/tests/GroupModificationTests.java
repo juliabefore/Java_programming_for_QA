@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class GroupModificationTests extends TestBase{
 	
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void modifySomeGroup(){
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();
