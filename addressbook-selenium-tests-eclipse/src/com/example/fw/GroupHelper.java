@@ -47,5 +47,11 @@ public class GroupHelper extends HelperBase{
 		click(By.name("update"));
 		
 	}
+	
+	public String getRandom(int a){
+		//Random random = new Random();
+		String sRand = myRandom(a);
+		return sRand;
+	}
 
 }

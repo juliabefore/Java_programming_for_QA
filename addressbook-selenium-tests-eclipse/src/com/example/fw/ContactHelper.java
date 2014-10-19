@@ -42,4 +42,23 @@ public class ContactHelper extends HelperBase{
 		click(By.linkText("home page"));
 	}
 
+	public void initContactEdit(int index) {
+		selectContactByIndex(index);
+		
+	}
+
+	private void selectContactByIndex(int index) {
+		click(By.xpath("(//img[@title='Edit'])[" + index + "]"));
+	}
+
+	public void submitContactDelete() {
+		click(By.xpath("//input[@value='Delete']"));
+		
+	}
+
+	public void submitContactModification() {
+		click(By.xpath("//input[@value='Update']"));
+		
+	}
+
 }
