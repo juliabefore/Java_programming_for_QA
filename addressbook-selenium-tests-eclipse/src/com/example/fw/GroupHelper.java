@@ -48,10 +48,4 @@ public class GroupHelper extends HelperBase{
 		
 	}
 	
-	public String getRandom(int a){
-		//Random random = new Random();
-		String sRand = myRandom(a);
-		return sRand;
-	}
-
 }
