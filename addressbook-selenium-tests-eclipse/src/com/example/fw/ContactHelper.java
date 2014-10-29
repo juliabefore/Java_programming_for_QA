@@ -82,10 +82,14 @@ public class ContactHelper extends HelperBase{
 		List<WebElement> rows = getContactRows();
 		for (WebElement row : rows) {
 			ContactData contact = new ContactData();
-			WebElement lastNameS = row.findElement(By.xpath("//table/tbody/tr[@name='entry'][*]/td[2]"));
+			WebElement lastNameS = row.findElement(By.xpath(".//td[2]"));
 			contact.lastName = lastNameS.getText();
-			WebElement firstNameS = row.findElement(By.xpath("//table/tbody/tr[@name='entry'][*]/td[3]"));
+			WebElement firstNameS = row.findElement(By.xpath(".//td[3]"));
 			contact.firstName = firstNameS.getText();
+			WebElement emailS = row.findElement(By.xpath(".//td[4]"));
+			contact.eMail = emailS.getText();
+			WebElement telS = row.findElement(By.xpath(".//td[5]"));
+			contact.telHome = telS.getText();
 			contacts.add(contact);
 		}
 		
@@ -94,9 +98,7 @@ public class ContactHelper extends HelperBase{
 
 	private List<WebElement> getContactRows() {
 		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name='entry']"));
-		for (WebElement row : rows) {
-			rows.add(row);
-		}	
+		
 		return rows;
 	}
 
