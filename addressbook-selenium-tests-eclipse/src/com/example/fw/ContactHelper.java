@@ -34,14 +34,14 @@ public class ContactHelper extends HelperBase{
 		List<WebElement> rows = getContactRows();
 		for (WebElement row : rows) {
 				
-			WebElement firstNameS = row.findElement(By.xpath(".//td[3]"));
-			String firstName = firstNameS.getText();
-			cachedContacts.add(new ContactData().withFirstName(firstName));
-			
 			WebElement lastNameS = row.findElement(By.xpath(".//td[2]"));
 			String lastName = lastNameS.getText();
 			cachedContacts.add(new ContactData().withLastName(lastName));
 			
+			WebElement firstNameS = row.findElement(By.xpath(".//td[3]"));
+			String firstName = firstNameS.getText();
+			cachedContacts.add(new ContactData().withFirstName(firstName));
+									
 			WebElement emailS = row.findElement(By.xpath(".//td[4]"));
 			String eMail = emailS.getText();
 			cachedContacts.add(new ContactData().withEMail(eMail));
