@@ -45,20 +45,20 @@ public class ContactData implements Comparable<ContactData> {
 
 
 
-	public String firstName;
-	public String lastName;
-	public String address;
-	public String telHome;
-	public String telMobile;
-	public String telWork;
-	public String eMail;
-	public String eMail2;
-	public String bDay;
-	public String bMonth;
-	public String bYear;
-	public String newGroup;
-	public String address2;
-	public String phone2;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String telHome;
+	private String telMobile;
+	private String telWork;
+	private String eMail;
+	private String eMail2;
+	private String bDay;
+	private String bMonth;
+	private String bYear;
+	private String newGroup;
+	private String address2;
+	private String phone2;
 
 	public ContactData(String firstName, String lastName, String address,
 			String telHome, String telMobile, String telWork, String eMail,
@@ -88,4 +88,131 @@ public class ContactData implements Comparable<ContactData> {
 	public int compareTo(ContactData other) {
 		return this.lastName.toLowerCase().compareTo(other.lastName.toLowerCase());
 	}
+
+	public ContactData withFirstName(String firstName) {
+		this.firstName = firstName;
+		return this;
+	}
+
+	public ContactData withLastName(String lastName) {
+		this.lastName = lastName;
+		return this;
+	}
+
+	public ContactData withAddress(String address) {
+		this.address = address;
+		return this;
+	}
+
+	public ContactData withTelHome(String telHome) {
+		this.telHome = telHome;
+		return this;
+	}
+
+	public ContactData withTelMobile(String telMobile) {
+		this.telMobile = telMobile;
+		return this;
+	}
+
+	public ContactData withTelWork(String telWork) {
+		this.telWork = telWork;
+		return this;
+	}
+
+	public ContactData withEMail(String eMail) {
+		this.eMail = eMail;
+		return this;
+	}
+
+	public ContactData withEMail2(String eMail2) {
+		this.eMail2 = eMail2;
+		return this;
+	}
+
+	public ContactData withBDay(String bDay) {
+		this.bDay = bDay;
+		return this;
+	}
+
+	public ContactData withBMonth(String bMonth) {
+		this.bMonth = bMonth;
+		return this;
+	}
+
+	public ContactData withBYear(String bYear) {
+		this.bYear = bYear;
+		return this;
+	}
+
+	public ContactData withNewGroup(String newGroup) {
+		this.newGroup = newGroup;
+		return this;
+	}
+
+	public ContactData withAddress2(String address2) {
+		this.address2 = address2;
+		return this;
+	}
+
+	public ContactData withPhone2(String phone2) {
+		this.phone2 = phone2;
+		return this;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getTelHome() {
+		return telHome;
+	}
+
+	public String getTelMobile() {
+		return telMobile;
+	}
+
+	public String getTelWork() {
+		return telWork;
+	}
+
+	public String getEMail() {
+		return eMail;
+	}
+
+	public String getEMail2() {
+		return eMail2;
+	}
+
+	public String getBDay() {
+		return bDay;
+	}
+
+	public String getBMonth() {
+		return bMonth;
+	}
+
+	public String getBYear() {
+		return bYear;
+	}
+
+	public String getNewGroup() {
+		return newGroup;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public String getPhone2() {
+		return phone2;
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.example.tests;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -33,10 +34,10 @@ public class TestBase {
 		List<Object[]> list = new ArrayList<Object[]>();
 				
 		for(int i = 0; i<5; i++){
-			GroupData group = new GroupData();
-			group.name = generateRandomString();
-			group.header = generateRandomString();
-			group.footer = generateRandomString();
+			GroupData group = new GroupData()
+				.withName(generateRandomString())
+				.withHeader(generateRandomString())
+				.withFooter(generateRandomString());
 			list.add(new Object[]{group});
 		}
 		return list.iterator();
@@ -47,21 +48,21 @@ public class TestBase {
 		List<Object[]> list = new ArrayList<Object[]>();
 		
 		for(int i = 0; i < 5; i++){
-			ContactData contact = new ContactData();
-			contact.firstName = generateRandomString();
-			contact.lastName = generateRandomString();
-			contact.address = generateRandomString();
-			contact.telHome = generateRandomString();
-			contact.telMobile = generateRandomString();
-			contact.telWork = generateRandomString();
-			contact.eMail = generateRandomString();
-			contact.eMail2 = generateRandomString();
-			contact.bDay = generateRandomDay();
-			contact.bMonth = generateRandomMonth();
-			contact.bYear = generateRandomYear();
-			contact.newGroup = "group name 1";
-			contact.address2 = generateRandomString();
-			contact.phone2 = generateRandomString();
+			ContactData contact = new ContactData()
+				.withFirstName(generateRandomString())
+				.withLastName(generateRandomString())
+				.withAddress(generateRandomString())
+				.withTelHome(generateRandomPhone())
+				.withTelMobile(generateRandomPhone())
+				.withTelWork(generateRandomPhone())
+				.withEMail(generateRandomEmail())
+				.withEMail2(generateRandomEmail())
+				.withBDay(generateRandomDay())
+				.withBMonth(generateRandomMonth())
+				.withBYear(generateRandomYear())
+				.withNewGroup("group name 1")
+				.withAddress2(generateRandomString())
+				.withPhone2(generateRandomPhone());
 			list.add(new Object[]{contact});
 		}
 		return list.iterator();
@@ -114,7 +115,7 @@ public class TestBase {
 
 	public String generateRandomString(){
 		Random rnd = new Random();
-		if(rnd.nextInt(4) == 0){
+		if(rnd.nextInt(3) == 0){
 			return "";
 		}/*else if(rnd.nextInt(4) == 1){
 			return null;
@@ -122,5 +123,47 @@ public class TestBase {
 			return "test" + rnd.nextInt();
 		}
 	}
+	
+	public String generateRandomPhone(){
+		Random rnd = new Random();
+		if(rnd.nextInt(3) == 0){
+			return "";
+		}else{
+			int rand1 = 100 + (int)(Math.random() * ((999 - 100) + 1));
+			int rand2 = 100 + (int)(Math.random() * ((999 - 100) + 1));
+			int rand3 = 10 + (int)(Math.random() * ((99 - 10) + 1));
+			int rand4 = 10 + (int)(Math.random() * ((99 - 10) + 1));
+			return "+38 " + "(" + rand1 + ") " + rand2 + "-" + rand3 + "-" + rand4;
+		}
+	}
+	
+	public String generateRandomEmail(){
+		Random rnd = new Random();
+		if(rnd.nextInt(3) == 0){
+			return "";
+		}else{
+			return "e-mail" + rnd.nextInt() + "@gmail.com";
+		}
+	}
+/*	
+public static Date rundomWithNulls(){
+		
+		Random rnd = new Random();
+		Date date = new Date();
+		if(rnd.nextInt(3) == 0){
+			
+			return null;
+		}else{
+			int year = 1920 + (int)(Math.random() * ((2014 - 1920) + 1));
+			date.setYear(year);
+			int month = rnd.nextInt(13) + 1;
+			date.setMonth(month);
+			int day = rnd.nextInt(32) + 1;
+			date.setDate(day);
+		}
+		
+		
+		return date;
+	}*/
 		
 }
