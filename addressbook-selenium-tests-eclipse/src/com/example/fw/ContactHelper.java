@@ -19,6 +19,12 @@ public class ContactHelper extends HelperBase{
 	
 	private SortedListOf<ContactData> cachedContacts;
 	
+	public SortedListOf<ContactData> getContactsFromPhonePage() {
+		// TODO Auto-generated method stub
+		////td[@valign="top"]
+		return null;
+	}
+	
 	public SortedListOf<ContactData> getContacts(){
 		if(cachedContacts == null){
 			rebuildCache();
@@ -36,19 +42,22 @@ public class ContactHelper extends HelperBase{
 				
 			WebElement lastNameS = row.findElement(By.xpath(".//td[2]"));
 			String lastName = lastNameS.getText();
-			cachedContacts.add(new ContactData().withLastName(lastName));
-			
+						
 			WebElement firstNameS = row.findElement(By.xpath(".//td[3]"));
 			String firstName = firstNameS.getText();
-			cachedContacts.add(new ContactData().withFirstName(firstName));
-									
+												
 			WebElement emailS = row.findElement(By.xpath(".//td[4]"));
 			String eMail = emailS.getText();
-			cachedContacts.add(new ContactData().withEMail(eMail));
-			
+						
 			WebElement telS = row.findElement(By.xpath(".//td[5]"));
 			String telHome = telS.getText();
-			cachedContacts.add(new ContactData().withTelHome(telHome));
+						
+			ContactData contact = new ContactData();
+			contact.withLastName(lastName);
+			contact.withFirstName(firstName);
+			contact.withEMail(eMail);
+			contact.withTelHome(telHome);
+			cachedContacts.add(contact);
 		}
 		
 	}
@@ -84,6 +93,11 @@ public class ContactHelper extends HelperBase{
 		submitContactDelete();
 		returnToHomePage();
 		rebuildCache();
+	}
+	
+	public void goToPhonePage() {
+		manager.navigateTo().phonePage();
+		
 	}
 	
 		
@@ -167,6 +181,10 @@ public class ContactHelper extends HelperBase{
 		return contacts;
 	}
 */
+
+	
+
+	
 
 		
 }

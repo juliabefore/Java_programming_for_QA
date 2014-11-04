@@ -17,6 +17,22 @@ public class NavigationHelper extends HelperBase {
 	private boolean onMainPage() {
 		return driver.findElements(By.id("maintable")).size() > 0;
 	}
+	
+	public void phonePage() {
+		if(! onPhonePage()){
+			click(By.linkText("print phones"));
+		}
+		
+	}
+
+	private boolean onPhonePage() {
+		if(driver.getCurrentUrl().contains("/view.php?all&print&phones")){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
 
 	public void groupsPage() {
 		if(! onGroupsPage()){
@@ -32,5 +48,7 @@ public class NavigationHelper extends HelperBase {
 			return false;
 		}
 	}
+
+	
 
 }
