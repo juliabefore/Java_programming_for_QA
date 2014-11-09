@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Default suite">
+  <test verbose="2" name="Default test">
+    <classes>
+      <class name="com.example.utils.ListOf"/><class name="com.example.fw.NavigationHelper"/>
+      <class name="com.example.tests.ContactData"/><class name="com.example.fw.HelperBase"/>
+      <class name="com.example.tests.ContactModificationTests"/><class name="com.example.fw.ContactHelper"/>
+      <class name="com.example.tests.ContactRemovalTests"/>
+      <class name="com.example.utils.SortedListOf"/>
+      <class name="com.example.fw.ApplicationManager"/>
+      <class name="com.example.tests.ContactCreationTests"/>
+      <class name="com.example.tests.ContactDataGenerator"/>
+    </classes>
+  </test> <!-- Default test -->
+</suite> <!-- Default suite -->
