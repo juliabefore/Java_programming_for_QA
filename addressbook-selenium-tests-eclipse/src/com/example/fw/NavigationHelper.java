@@ -26,12 +26,7 @@ public class NavigationHelper extends HelperBase {
 	}
 
 	private boolean onPhonePage() {
-		if(driver.getCurrentUrl().contains("/view.php?all&print&phones")){
-			return true;
-		}else{
-			return false;
-		}
-		
+		return driver.getCurrentUrl().contains("/view.php?all&print&phones");
 	}
 
 	public void groupsPage() {

@@ -18,13 +18,110 @@ public class ContactHelper extends HelperBase{
 	}
 	
 	private SortedListOf<ContactData> cachedContacts;
+	private SortedListOf<ContactData> cachedContactsTel;
 	
-	public SortedListOf<ContactData> getContactsFromPhonePage() {
-		// TODO Auto-generated method stub
-		////td[@valign="top"]
-		return null;
+	public SortedListOf<ContactData> getContactsForPhoneTests() {
+		if(cachedContacts == null){
+			rebuildCacheForPhoneTests();
+		}
+		return cachedContacts;
 	}
 	
+	private void rebuildCacheForPhoneTests() {
+		cachedContacts = new SortedListOf<ContactData>();
+		manager.navigateTo().mainPage();
+		List<WebElement> rows = getContactRows();
+		for (WebElement row : rows) {
+				
+			WebElement lastNameS = row.findElement(By.xpath(".//td[2]"));
+			String lastName = lastNameS.getText();
+						
+			WebElement firstNameS = row.findElement(By.xpath(".//td[3]"));
+			String firstName = firstNameS.getText();
+			
+			WebElement telHomeS = row.findElement(By.xpath(".//td[5]"));
+			String telHome = telHomeS.getText();
+												
+			ContactData contact = new ContactData();
+			contact.withLastName(lastName);
+			contact.withFirstName(firstName);
+			contact.withTelHome(telHome);
+			cachedContacts.add(contact);
+		}
+	}
+
+	public SortedListOf<ContactData> getContactsFromPhonePage() {
+		if(cachedContactsTel == null){
+			rebuildCachePhonePage();
+		}
+		return cachedContactsTel;
+	}
+	
+	public SortedListOf<ContactData> tryGetContPhonePage() {
+		SortedListOf<ContactData> contacts = new SortedListOf<ContactData>();
+		List<WebElement> rows = getContactRowsOnPhonePage();
+		for (WebElement row : rows) {
+			WebElement firstNameLastNameS = row.findElement(By.xpath(".//b"));
+			//String firstNameLastName = firstNameLastNameS.getText();
+			String firstNameLastName = firstNameLastNameS.getAttribute("textContent");
+			String[] arrFirstLastNames = firstNameLastName.split("\\s+");
+			//String firstName = firstNameLastName;
+			
+			String firstName;
+			String lastName;
+			
+			if(firstNameLastName.matches("\\s+\\w+") == true){
+				firstName = "bla";
+				lastName = firstNameLastName.trim();
+			}else{
+				firstName = arrFirstLastNames[0];
+				try{
+					lastName = arrFirstLastNames[1];
+				}
+				catch(java.lang.ArrayIndexOutOfBoundsException e){
+					lastName = "null";
+				}
+			}
+			
+			/*
+			WebElement allInfo = row.findElement(By.xpath("//td[@valign='top']"));
+			String allInfoStr = allInfo.getText();
+			String telHome = allInfoStr;
+			*/
+			
+			ContactData contact = new ContactData();
+			contact.withFirstName(firstName);
+			contact.withLastName(lastName);
+			//contact.withTelHome(telHome);
+			contacts.add(contact);
+		}
+		return contacts;
+	}
+	
+	private void rebuildCachePhonePage() {
+		cachedContactsTel = new SortedListOf<ContactData>();
+		manager.navigateTo().phonePage();
+		List<WebElement> rows = getContactRowsOnPhonePage();
+		for (WebElement row : rows) {
+			WebElement firstNameLastNameS = row.findElement(By.xpath(".//b"));
+			String firstNameLastName = firstNameLastNameS.getText();
+			String[] arrFirstLastNames = firstNameLastName.split("\\s+");
+			String firstName = arrFirstLastNames[0];
+			String lastName = arrFirstLastNames[1];
+			
+			WebElement allInfo = row.findElement(By.xpath("//td[@valign='top']"));
+			String allInfoStr = allInfo.getText();
+			String telHome = allInfoStr;
+			
+			
+			ContactData contact = new ContactData();
+			contact.withFirstName(firstName);
+			contact.withLastName(lastName);
+			contact.withTelHome(telHome);
+			cachedContactsTel.add(contact);
+		}
+	}
+
 	public SortedListOf<ContactData> getContacts(){
 		if(cachedContacts == null){
 			rebuildCache();
@@ -34,6 +131,34 @@ public class ContactHelper extends HelperBase{
 		
 	}
 
+	public SortedListOf<ContactData> tryGetContMainPage() {
+		SortedListOf<ContactData> contacts = new SortedListOf<ContactData>();
+		manager.navigateTo().mainPage();
+		List<WebElement> rows = getContactRows();
+		for (WebElement row : rows) {
+				
+			WebElement lastNameS = row.findElement(By.xpath(".//td[2]"));
+			String lastName = lastNameS.getText();
+						
+			WebElement firstNameS = row.findElement(By.xpath(".//td[3]"));
+			String firstName = firstNameS.getText();
+			/*									
+			WebElement emailS = row.findElement(By.xpath(".//td[4]"));
+			String eMail = emailS.getText();
+			*/	/*		
+			WebElement telS = row.findElement(By.xpath(".//td[5]"));
+			String telHome = telS.getText();
+			*/			
+			ContactData contact = new ContactData();
+			contact.withLastName(lastName);
+			contact.withFirstName(firstName);
+			//contact.withEMail(eMail);
+			//contact.withTelHome(telHome);
+			contacts.add(contact);
+		}
+		return contacts;
+	}
+	
 	private void rebuildCache() {
 		cachedContacts = new SortedListOf<ContactData>();
 		manager.navigateTo().mainPage();
@@ -62,8 +187,14 @@ public class ContactHelper extends HelperBase{
 		
 	}
 
-	private List<WebElement> getContactRows() {
+	public List<WebElement> getContactRows() {
 		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name='entry']"));
+		
+		return rows;
+	}
+	
+	public List<WebElement> getContactRowsOnPhonePage() {
+		List<WebElement> rows = driver.findElements(By.xpath("//td[@valign='top']"));
 		
 		return rows;
 	}
@@ -93,6 +224,14 @@ public class ContactHelper extends HelperBase{
 		submitContactDelete();
 		returnToHomePage();
 		rebuildCache();
+	}
+	
+	public void cheksOnPhonePage() {
+		manager.navigateTo().phonePage();
+				
+	}
+	public void actionsFromPhonePage() {
+		driver.navigate().back();
 	}
 	
 	public void goToPhonePage() {
@@ -184,7 +323,4 @@ public class ContactHelper extends HelperBase{
 
 	
 
-	
-
-		
 }

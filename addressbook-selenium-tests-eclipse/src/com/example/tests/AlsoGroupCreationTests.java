@@ -9,7 +9,7 @@ import com.example.utils.SortedListOf;
 
 public class AlsoGroupCreationTests extends TestBase{
   
-	@Test(dataProvider = "randomValidGroupGenerator")
+	@Test(dataProvider = "randomValidGroupGenerator", enabled = false)
 	  public void testGroupCreationWithValidData(GroupData group) throws Exception {
 	      
 	    //save old state

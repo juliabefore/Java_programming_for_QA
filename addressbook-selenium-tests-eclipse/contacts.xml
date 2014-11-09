@@ -1,0 +1,40 @@
+<list>
+  <contact>
+    <firstName>test1317259247</firstName>
+    <lastName>test-457732758</lastName>
+    <address>test29197954
+test
+test
+test</address>
+    <telHome>+38 (100) 672-55-72</telHome>
+    <telMobile>+38 (511) 521-53-30</telMobile>
+    <telWork>+38 (821) 517-15-76</telWork>
+    <eMail>e-mail-1163362302@gmail.com</eMail>
+    <eMail2>e-mail1602257434@gmail.com</eMail2>
+    <bDay>-</bDay>
+    <bMonth>January</bMonth>
+    <bYear></bYear>
+    <newGroup>group name 1</newGroup>
+    <address2>test-1466949682
+test
+test
+test</address2>
+    <phone2>+38 (333) 308-79-24</phone2>
+  </contact>
+  <contact>
+    <firstName></firstName>
+    <lastName>test-434628922</lastName>
+    <address></address>
+    <telHome>+38 (193) 720-58-31</telHome>
+    <telMobile>+38 (459) 408-42-27</telMobile>
+    <telWork>+38 (944) 458-20-42</telWork>
+    <eMail></eMail>
+    <eMail2></eMail2>
+    <bDay>-</bDay>
+    <bMonth>December</bMonth>
+    <bYear>1921</bYear>
+    <newGroup>group name 1</newGroup>
+    <address2>test-344537597</address2>
+    <phone2>+38 (389) 312-74-75</phone2>
+  </contact>
+</list>
