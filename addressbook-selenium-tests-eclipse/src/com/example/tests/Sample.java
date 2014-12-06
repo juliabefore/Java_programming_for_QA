@@ -1,20 +1,34 @@
 package com.example.tests;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.example.fw.ApplicationManager;
-import com.example.fw.HelperBase;
+import com.example.fw.JdbcHelper;
+import com.example.fw.WebDriverHelperBase;
 
-public class Sample extends HelperBase {
+public class Sample extends WebDriverHelperBase {
 
 	public Sample(ApplicationManager manager) {
 		super(manager);
 	}
 	protected static WebDriver driver;
-
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		Properties properties = new Properties();
+		properties.load(new FileReader(new File("application.properties")));
+		ApplicationManager app = new ApplicationManager(properties);
+		System.out.println(app.getHibernateHelper().listGroups());
+		//JdbcHelper jdbc = new JdbcHelper(app, "jdbc:mysql://localhost/addressbook?user=root&password=");
+		//System.out.println(jdbc.listGroups());
+		
 		/*String a = "tttest";
 		String b = "testtest";
 					
@@ -88,9 +102,10 @@ public class Sample extends HelperBase {
 		System.out.println("ky-k-ky");
 		System.out.println(firstNameLastName.matches("\\s+\\w+"));
 		*/
-		
+		/*
 		String line = ",,test102550157,!";
 		System.out.println(line.split(",").length);
+		*/
 	}
 
 }
