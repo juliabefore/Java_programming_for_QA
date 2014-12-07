@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.example.tests.ContactData;
+import com.example.tests.GroupData;
 import com.example.utils.SortedListOf;
 
 public class ContactHelper extends WebDriverHelperBase{
@@ -121,16 +122,14 @@ public class ContactHelper extends WebDriverHelperBase{
 			cachedContactsTel.add(contact);
 		}
 	}
-
+/*
 	public SortedListOf<ContactData> getContacts(){
 		if(cachedContacts == null){
 			rebuildCache();
 		}
-		return cachedContacts;
-		
-		
+		return cachedContacts;		
 	}
-
+*/
 	public SortedListOf<ContactData> tryGetContMainPage() {
 		SortedListOf<ContactData> contacts = new SortedListOf<ContactData>();
 		manager.navigateTo().mainPage();
@@ -158,7 +157,7 @@ public class ContactHelper extends WebDriverHelperBase{
 		}
 		return contacts;
 	}
-	
+/*	
 	private void rebuildCache() {
 		cachedContacts = new SortedListOf<ContactData>();
 		manager.navigateTo().mainPage();
@@ -186,7 +185,7 @@ public class ContactHelper extends WebDriverHelperBase{
 		}
 		
 	}
-
+*/
 	public List<WebElement> getContactRows() {
 		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name='entry']"));
 		
@@ -205,7 +204,9 @@ public class ContactHelper extends WebDriverHelperBase{
 		fillContactForm(contact, CREATION);
 		submitContactCreation();
 		returnToHomePage();
-		rebuildCache();
+		//Update model
+		manager.getModel().addContact(contact);
+		/*rebuildCache();*/
 		return this;
 	}
 	
@@ -215,7 +216,9 @@ public class ContactHelper extends WebDriverHelperBase{
 		fillContactForm(contact, MODIFICATION);
 		submitContactModification();
 		returnToHomePage();
-		rebuildCache();
+		//Update model
+		manager.getModel().removeContact(index).addContact(contact);
+		/*rebuildCache();*/
 		return this;
 	}
 	
@@ -223,7 +226,9 @@ public class ContactHelper extends WebDriverHelperBase{
 		initContactEdit(index);
 		submitContactDelete();
 		returnToHomePage();
-		rebuildCache();
+		//Update model
+		manager.getModel().removeContact(index);
+		/*rebuildCache();*/
 	}
 	
 	public void cheksOnPhonePage() {
@@ -320,6 +325,36 @@ public class ContactHelper extends WebDriverHelperBase{
 		return contacts;
 	}
 */
+
+	public SortedListOf<ContactData> getUiContacts() {
+		SortedListOf<ContactData> contacts = new SortedListOf<ContactData>();
+		manager.navigateTo().mainPage();
+		List<WebElement> rows = getContactRows();
+		for (WebElement row : rows) {
+				
+			WebElement lastNameS = row.findElement(By.xpath(".//td[2]"));
+			String lastName = lastNameS.getText();
+						
+			WebElement firstNameS = row.findElement(By.xpath(".//td[3]"));
+			String firstName = firstNameS.getText();
+												
+			WebElement emailS = row.findElement(By.xpath(".//td[4]"));
+			String eMail = emailS.getText();
+						
+			WebElement telS = row.findElement(By.xpath(".//td[5]"));
+			String telHome = telS.getText();
+						
+			ContactData contact = new ContactData();
+			contact.withLastName(lastName);
+			contact.withFirstName(firstName);
+			contact.withEMail(eMail);
+			contact.withTelHome(telHome);
+			cachedContacts.add(contact);
+		}
+		return contacts;
+	}
+
+	
 
 	
 

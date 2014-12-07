@@ -14,17 +14,21 @@ public class AlsoGroupCreationTests extends TestBase{
 	      
 	    //save old state
 		SortedListOf<GroupData> oldList = app.getModel().getGroups();
-	    //SortedListOf<GroupData> oldList = app.getGroupHelper().getGroups();
+		/*------------- Get list without ApplicationModel
+		SortedListOf<GroupData> oldList = app.getGroupHelper().getGroups();
+	    */
 	    
 	    //actions
 	    app.getGroupHelper().createGroup(group);
 	    
 	    //save new state
 	    SortedListOf<GroupData> newList = app.getModel().getGroups();
-	    //SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
+	    /*------------- Get list without ApplicationModel
+	    SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
+	    */
 	    
 	    //compare states
-	    assertThat(newList, equalTo(oldList.withAdded(group)));
+	    //assertThat(newList, equalTo(oldList.withAdded(group)));
 	    
 	    //Compare model to implementation
 	    if(wantToCheck()){

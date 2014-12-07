@@ -44,7 +44,7 @@ public class ContactData implements Comparable<ContactData> {
 	}
 
 
-
+	private String contId;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -110,6 +110,11 @@ public class ContactData implements Comparable<ContactData> {
 		//
 	}
 
+	public ContactData withContId(String contId) {
+		this.contId = contId;
+		return this;
+	}
+	
 	public ContactData withFirstName(String firstName) {
 		this.firstName = firstName;
 		return this;
@@ -234,6 +239,90 @@ public class ContactData implements Comparable<ContactData> {
 
 	public String getPhone2() {
 		return phone2;
+	}
+
+	public String getContId() {
+		return contId;
+	}
+
+	public String geteMail() {
+		return eMail;
+	}
+
+	public String geteMail2() {
+		return eMail2;
+	}
+
+	public String getbDay() {
+		return bDay;
+	}
+
+	public String getbMonth() {
+		return bMonth;
+	}
+
+	public String getbYear() {
+		return bYear;
+	}
+
+	public void setContId(String contId) {
+		this.contId = contId;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setTelHome(String telHome) {
+		this.telHome = telHome;
+	}
+
+	public void setTelMobile(String telMobile) {
+		this.telMobile = telMobile;
+	}
+
+	public void setTelWork(String telWork) {
+		this.telWork = telWork;
+	}
+
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
+	}
+
+	public void seteMail2(String eMail2) {
+		this.eMail2 = eMail2;
+	}
+
+	public void setbDay(String bDay) {
+		this.bDay = bDay;
+	}
+
+	public void setbMonth(String bMonth) {
+		this.bMonth = bMonth;
+	}
+
+	public void setbYear(String bYear) {
+		this.bYear = bYear;
+	}
+
+	public void setNewGroup(String newGroup) {
+		this.newGroup = newGroup;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
 	}
 	
 }

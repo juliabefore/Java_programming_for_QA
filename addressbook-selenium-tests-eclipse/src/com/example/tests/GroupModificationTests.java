@@ -16,8 +16,10 @@ public class GroupModificationTests extends TestBase{
 			    
 	    //save old state
 		SortedListOf<GroupData> oldList = app.getModel().getGroups();
-		//SortedListOf<GroupData> oldList = app.getGroupHelper().getUiGroups();
-		//SortedListOf<GroupData> oldList = app.getGroupHelper().getGroups();
+		/*------------- Get list without ApplicationModel
+		SortedListOf<GroupData> oldList = app.getGroupHelper().getUiGroups();
+		SortedListOf<GroupData> oldList = app.getGroupHelper().getGroups();
+	    */
 	    
 	    Random rnd = new Random();
 	    int index = rnd.nextInt(oldList.size()-1);
@@ -27,12 +29,15 @@ public class GroupModificationTests extends TestBase{
 				
 		//save new state
 	    SortedListOf<GroupData> newList = app.getModel().getGroups();
-	    //SortedListOf<GroupData> newList = app.getGroupHelper().getUiGroups();
-	    //SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
+	    /*------------- Get list without ApplicationModel
+	    SortedListOf<GroupData> newList = app.getGroupHelper().getUiGroups();
+	    SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
+	    */
 	    
 	    //compare states
-	    assertThat(newList, equalTo(oldList.without(index).withAdded(group)));
-	  //Compare model to implementation
+	    //assertThat(newList, equalTo(oldList.without(index).withAdded(group)));
+	    
+	    //Compare model to implementation
 	    if(wantToCheck()){
 	    	if("yes".equals(app.getProperty("check.db"))){
 	        	assertThat(app.getModel().getGroups(), equalTo(app.getHibernateHelper().listGroups()));
