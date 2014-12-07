@@ -34,7 +34,7 @@ public class ContactData implements Comparable<ContactData> {
 	
 	@Override
 	public String toString() {
-		return "ContactData [firstName=" + firstName + ", lastName=" + lastName
+		return "ContactData [contId=" + contId + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", address=" + address + ", telHome=" + telHome
 				+ ", telMobile=" + telMobile + ", telWork=" + telWork
 				+ ", eMail=" + eMail + ", eMail2=" + eMail2 + ", bDay=" + bDay
@@ -60,10 +60,11 @@ public class ContactData implements Comparable<ContactData> {
 	private String address2;
 	private String phone2;
 
-	public ContactData(String firstName, String lastName, String address,
+	public ContactData(String contId, String firstName, String lastName, String address,
 			String telHome, String telMobile, String telWork, String eMail,
 			String eMail2, String bDay, String bMonth, String bYear,
 			String newGroup, String address2, String phone2) {
+		this.contId = contId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;

@@ -25,8 +25,8 @@ public class Sample extends WebDriverHelperBase {
 		Properties properties = new Properties();
 		properties.load(new FileReader(new File("application.properties")));
 		ApplicationManager app = new ApplicationManager(properties);
-		System.out.println(app.getHibernateHelper().listContacts());
-		
+		System.out.println(app.getHibernateHelper().listContactsFull());
+		//System.out.println(app.getHibernateHelper().listContacts());
 		//System.out.println(app.getHibernateHelper().listGroups());
 	
 		
